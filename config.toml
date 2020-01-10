@@ -9,6 +9,7 @@ enableEmoji = true
 theme = "jane"
 
 hasCJKLanguage = true
+googleAnalytics = "UA-155994167-1"
 paginate = 9
 
 defaultContentLanguage = "en"
@@ -46,4 +47,5 @@ defaultContentLanguage = "en"
 
 [params]
   since = "2020"
+  baidu_analytics = "aeaa2384b12fe093fad3519714e7034b"
   photoswipe = true  # see https://github.com/dimsemenov/PhotoSwipe
