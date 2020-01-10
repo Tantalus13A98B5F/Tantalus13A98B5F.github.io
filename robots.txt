@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://Tantalus13A98B5F.github.io/sitemap.xml
