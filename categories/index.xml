@@ -6,9 +6,28 @@
     <description>Recent content in Categories on Tantalus!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Sat, 11 Jan 2020 16:31:37 +0800</lastBuildDate>
     
 	<atom:link href="https://Tantalus13A98B5F.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>System</title>
+      <link>https://Tantalus13A98B5F.github.io/categories/system/</link>
+      <pubDate>Sat, 11 Jan 2020 16:31:37 +0800</pubDate>
+      
+      <guid>https://Tantalus13A98B5F.github.io/categories/system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notice</title>
+      <link>https://Tantalus13A98B5F.github.io/categories/notice/</link>
+      <pubDate>Thu, 02 Jan 2020 23:25:55 +0800</pubDate>
+      
+      <guid>https://Tantalus13A98B5F.github.io/categories/notice/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

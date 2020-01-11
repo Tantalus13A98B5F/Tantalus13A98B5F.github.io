@@ -6,7 +6,7 @@
     <description>Recent content on Tantalus!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jan 2020 16:31:37 +0800</lastBuildDate>
     
         <atom:link href="https://Tantalus13A98B5F.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,18 @@
       
         <description>Songlin (Tantalus) is an undergraduate student in his senior year at Shanghai Jiao Tong University (SJTU). He has a general interest in developing understanding into computer systems, and assisting the authoring of better software.
 Songlin is currently a research assistant at Lab of Cryptography and Computer Security, and he works primarily on software security. His paper &amp;ldquo;Accelerating SM2 Digital Signature Algorithm Using Modern Processor Features&amp;rdquo; has been accepted to ICICS&#39;19. Currently he is working on LLVM and Intel MPK for program hardening.</description>
+      
+    </item>
+    
+    <item>
+      <title>Clang: Don&#39;t Touch My Code!</title>
+      <link>https://Tantalus13A98B5F.github.io/post/clang-no-opt/</link>
+      <pubDate>Sat, 11 Jan 2020 16:31:37 +0800</pubDate>
+      
+      <guid>https://Tantalus13A98B5F.github.io/post/clang-no-opt/</guid>
+      
+        <description>Clang/LLVM is a toolchain that is widely adopted by both researchers and the industry. Based on LLVM, compilers for new targets are built, and program analysis solutions are developed, thanks to the well-defined LLVM IR. Nevertheless, Clang/LLVM is also famous for some of its strange (often just &amp;ldquo;different&amp;rdquo; from gcc) behaviors and very aggressive optimizations.
+Recently I am working on LLVM for program analysis and instrumentation, and I think it&#39;s time to write about how we are dealing with unwanted optimizations.</description>
       
     </item>
     
