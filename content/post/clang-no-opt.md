@@ -27,7 +27,7 @@ However, the latter optimization is not happening, i.e. `output.bc` and `optmize
 
 ## How is Clang calling optmizations?
 
-Before we get into the detail, let's look at what `clang` is doing internally. The `-###` argument may be helpful.
+Suspecting some action might be done in the frontend, we looked into what `clang` is doing internally. The `-###` argument may be helpful.
 
 ```sh
 $ clang -\#\#\# hello.c -O2 -c -o hello.bc -emit-llvm
@@ -63,34 +63,7 @@ Pass Arguments:  -tti -targetlibinfo -tbaa -scoped-noalias -assumption-cache-tra
  -domtree -basicaa -aa -loops -lazy-branch-prob -lazy-block-freq -opt-remark-emitter
  -instcombine -libcalls-shrinkwrap -loops -branch-prob -block-freq -lazy-branch-prob
  -lazy-block-freq -opt-remark-emitter -pgo-memop-opt -basicaa -aa -loops -lazy-branch-prob
- -lazy-block-freq -opt-remark-emitter -tailcallelim -simplifycfg -reassociate -domtree
- -loops -loop-simplify -lcssa-verification -lcssa -basicaa -aa -scalar-evolution
- -loop-rotate -licm -loop-unswitch -simplifycfg -domtree -basicaa -aa -loops
- -lazy-branch-prob -lazy-block-freq -opt-remark-emitter -instcombine -loop-simplify
- -lcssa-verification -lcssa -scalar-evolution -indvars -loop-idiom -loop-deletion
- -loop-unroll -mldst-motion -phi-values -basicaa -aa -memdep -lazy-branch-prob
- -lazy-block-freq -opt-remark-emitter -gvn -phi-values -basicaa -aa -memdep -memcpyopt
- -sccp -demanded-bits -bdce -basicaa -aa -loops -lazy-branch-prob -lazy-block-freq
- -opt-remark-emitter -instcombine -lazy-value-info -jump-threading -correlated-propagation
- -basicaa -aa -phi-values -memdep -dse -loops -loop-simplify -lcssa-verification -lcssa
- -basicaa -aa -scalar-evolution -licm -postdomtree -adce -simplifycfg -domtree -basicaa
- -aa -loops -lazy-branch-prob -lazy-block-freq -opt-remark-emitter -instcombine -barrier
- -elim-avail-extern -basiccg -rpo-functionattrs -globalopt -globaldce -basiccg -globals-aa
- -float2int -domtree -loops -loop-simplify -lcssa-verification -lcssa -basicaa -aa
- -scalar-evolution -loop-rotate -loop-accesses -lazy-branch-prob -lazy-block-freq
- -opt-remark-emitter -loop-distribute -branch-prob -block-freq -scalar-evolution
- -basicaa -aa -loop-accesses -demanded-bits -lazy-branch-prob -lazy-block-freq
- -opt-remark-emitter -loop-vectorize -loop-simplify -scalar-evolution -aa -loop-accesses
- -loop-load-elim -basicaa -aa -lazy-branch-prob -lazy-block-freq -opt-remark-emitter
- -instcombine -simplifycfg -domtree -loops -scalar-evolution -basicaa -aa -demanded-bits
- -lazy-branch-prob -lazy-block-freq -opt-remark-emitter -slp-vectorizer -opt-remark-emitter
- -instcombine -loop-simplify -lcssa-verification -lcssa -scalar-evolution -loop-unroll
- -lazy-branch-prob -lazy-block-freq -opt-remark-emitter -instcombine -loop-simplify
- -lcssa-verification -lcssa -scalar-evolution -licm -alignment-from-assumptions
- -strip-dead-prototypes -globaldce -constmerge -domtree -loops -branch-prob -block-freq
- -loop-simplify -lcssa-verification -lcssa -basicaa -aa -scalar-evolution -branch-prob
- -block-freq -loop-sink -lazy-branch-prob -lazy-block-freq -opt-remark-emitter -instsimplify
- -div-rem-pairs -simplifycfg -write-bitcode
+ <...>
 Pass Arguments:  -targetlibinfo -domtree -loops -branch-prob -block-freq
 Pass Arguments:  -targetlibinfo -domtree -loops -branch-prob -block-freq
 Pass Arguments:  -tti
@@ -98,6 +71,32 @@ Pass Arguments:  -tti
 
 So you see... there are so many passes, and there are so many rounds of passes!
 
+If you look into the source of `clang`, you'll see that all it is doing upon a `*.c` file is handled inside the `clang::ParseAST` function, defined at `lib/Parse/ParseAST.cpp:114`. Through `BackendConsumer::HandleTopLevelDecl`, each item defined in the source file is translated into IR, if `-emit-llvm` is used, and through `BackendConsumer::HandleTranslationUnit`, the IR is optimized and printed. Passes are directly called in `EmitAssemblyHelper::EmitAssembly`, and here we can see that different rounds of passes stand for per-function round, per-module round, and code-gen round, respectively. Thus you cannot append all the output by `-debug-pass` to an `opt` run -- it will not work.
+
+We compared the IR generated under different optimization level before going through all those passes, and we found that they were the same -- no optimizations done in the frontend.
+
 ## Put off optimizations
 
+Back to our topic. Regretfully we found that making clear about the pass running is not directly helpful, though interesting. Then what is that preventing the optimization? Maybe some metadata?
+
+We examined the IR code again, and found out that there's a function attribute called `optnone`, like this:
+
+```ll
+define dso_local i32 @main() #0 {
+    ...
+}
+
+attributes #0 = { noinline nounwind optnone uwtable ...
+```
+
+After manually removing this attribute, the optimization now works. If manual modification is not acceptable, `-Xclang -disable-O0-optnone` is to the rescue.
+
+One more thing. If we are using a higher optimization level, like `-O2`, can we simply put off the execution of all the passes? Yeah, use `-Xclang -disable-llvm-passes`.
+
 ## Zero out the stack
+
+Another interesting task is that, how to safely zero out the stack in clang. In C11, there is `memset_s`, a safe memory-set operation that will not get optimized. However, it is optional, and not included in clang. But there are other chances.
+
+As `memset` is in fact an internal function in LLVM, it could be created using a dedicated interface, i.e. [`IRBuilder::CreateMemSet`](http://llvm.org/doxygen/classllvm_1_1IRBuilderBase.html#a7a87ff785ecd8547f1fb561b6016827e). There is a `volatile` argument, with no explanation here. Well, all memory-write operations in LLVM could be marked as `volatile` so that it will not get optimized, and `memset` is just another case.
+
+Well, LLVM is great, offering so many possibilities. I just hope there could be better documentation :)
