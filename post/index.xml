@@ -18,7 +18,7 @@
       
       <guid>https://Tantalus13A98B5F.github.io/post/clang-no-opt/</guid>
       <description>Clang/LLVM is a toolchain that is widely adopted by both researchers and the industry. Based on LLVM, compilers for new targets are built, and program analysis solutions are developed, thanks to the well-defined LLVM IR. Nevertheless, Clang/LLVM is also famous for some of its strange (often just &amp;ldquo;different&amp;rdquo; from gcc) behaviors and very aggressive optimizations.
-Recently I am working on LLVM for program analysis and instrumentation, and I think it&#39;s time to write about how we are dealing with unwanted optimizations.</description>
+Recently I am working on LLVM (7.0) for program analysis and instrumentation, and I think it&#39;s time to write about how we are dealing with unwanted optimizations.</description>
     </item>
     
     <item>

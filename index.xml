@@ -19,7 +19,7 @@
       <guid>https://Tantalus13A98B5F.github.io/about/</guid>
       
         <description>Songlin (Tantalus) is an undergraduate student in his senior year at Shanghai Jiao Tong University (SJTU). He has a general interest in developing understanding into computer systems, and assisting the authoring of better software.
-Songlin is currently a research assistant at Lab of Cryptography and Computer Security, and he works primarily on software security. His paper &amp;ldquo;Accelerating SM2 Digital Signature Algorithm Using Modern Processor Features&amp;rdquo; has been accepted to ICICS&#39;19. Currently he is working on LLVM and Intel MPK for program hardening.</description>
+Songlin is currently a research assistant at Lab of Cryptography and Computer Security, and he works primarily on software security. His paper &amp;ldquo;Accelerating SM2 Digital Signature Algorithm Using Modern Processor Features&amp;rdquo; has been accepted to ICICS&#39;19. Recently he is working on LLVM and Intel MPK for program hardening.</description>
       
     </item>
     
@@ -31,7 +31,7 @@ Songlin is currently a research assistant at Lab of Cryptography and Computer Se
       <guid>https://Tantalus13A98B5F.github.io/post/clang-no-opt/</guid>
       
         <description>Clang/LLVM is a toolchain that is widely adopted by both researchers and the industry. Based on LLVM, compilers for new targets are built, and program analysis solutions are developed, thanks to the well-defined LLVM IR. Nevertheless, Clang/LLVM is also famous for some of its strange (often just &amp;ldquo;different&amp;rdquo; from gcc) behaviors and very aggressive optimizations.
-Recently I am working on LLVM for program analysis and instrumentation, and I think it&#39;s time to write about how we are dealing with unwanted optimizations.</description>
+Recently I am working on LLVM (7.0) for program analysis and instrumentation, and I think it&#39;s time to write about how we are dealing with unwanted optimizations.</description>
       
     </item>
     
