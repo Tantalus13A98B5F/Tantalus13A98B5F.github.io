@@ -6,7 +6,7 @@
     <description>Recent content in clang on Tantalus!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 11 Jan 2020 16:31:37 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 16:31:37 +0800</lastBuildDate>
     
 	<atom:link href="https://Tantalus13A98B5F.github.io/tags/clang/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Clang: Don&#39;t Touch My Code!</title>
       <link>https://Tantalus13A98B5F.github.io/post/clang-no-opt/</link>
-      <pubDate>Sat, 11 Jan 2020 16:31:37 +0800</pubDate>
+      <pubDate>Fri, 24 Jan 2020 16:31:37 +0800</pubDate>
       
       <guid>https://Tantalus13A98B5F.github.io/post/clang-no-opt/</guid>
       <description>Clang/LLVM is a toolchain that is widely adopted by both researchers and the industry. Based on LLVM, compilers for new targets are built, and program analysis solutions are developed, thanks to the well-defined LLVM IR. Nevertheless, Clang/LLVM is also famous for some of its strange (often just &amp;ldquo;different&amp;rdquo; from gcc) behaviors and very aggressive optimizations.

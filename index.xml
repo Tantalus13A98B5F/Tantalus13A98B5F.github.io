@@ -6,7 +6,7 @@
     <description>Recent content on Tantalus!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 11 Jan 2020 16:31:37 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 20:07:37 +0800</lastBuildDate>
     
         <atom:link href="https://Tantalus13A98B5F.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -24,9 +24,20 @@ Songlin is currently a research assistant at Lab of Cryptography and Computer Se
     </item>
     
     <item>
+      <title>My Command Line Solution Roundup - 2019</title>
+      <link>https://Tantalus13A98B5F.github.io/post/cmdline-2019/</link>
+      <pubDate>Fri, 24 Jan 2020 20:07:37 +0800</pubDate>
+      
+      <guid>https://Tantalus13A98B5F.github.io/post/cmdline-2019/</guid>
+      
+        <description>在这个时间节点上，还是稍微来整理下过去这一年以来在命令行工具方面的积累吧。过去的一年也是我在命令行中工作地越来越多的一年——中学的时候写了不</description>
+      
+    </item>
+    
+    <item>
       <title>Clang: Don&#39;t Touch My Code!</title>
       <link>https://Tantalus13A98B5F.github.io/post/clang-no-opt/</link>
-      <pubDate>Sat, 11 Jan 2020 16:31:37 +0800</pubDate>
+      <pubDate>Fri, 24 Jan 2020 16:31:37 +0800</pubDate>
       
       <guid>https://Tantalus13A98B5F.github.io/post/clang-no-opt/</guid>
       
