@@ -94,4 +94,29 @@ Git Bash没有标签页也算是个问题。我也试过基于Electron的方案�
 
 - 文件模糊匹配：我用了[`fzf.vim`](https://github.com/junegunn/fzf.vim)，除了文件名还能搜很多别的东西，用处巨大；
 - 多处编辑：[`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)基本够用，而且不需要怎么配置；
-- 代码跳转：这也是我最近尝试的重点了，接下来展开说吧；
+- 代码跳转：也是Vim中自带的Tag系统，但还需要一些外部工具的配合，接下来展开说；
+
+要实现代码跳转，需要编辑器理解程序的语言吗？其实不怎么需要。有一类程序被称为`*tags`，则是通过简单的词法分析，从程序中提取定义的符号。这里面最经典的要数`ctags` (exuberant)，在项目目录里运行`ctags -R .`后会生成一个名为`tags`的文件，包含该项目中所有的符号和对应的位置。Vim能够读取`tag`文件中的信息，在有tag信息的目录下打开文件后，将光标移到一个引用的符号下，按下`^]`，就能够跳转到符号定义的位置。当然还有些别的功能，例如返回跳转前的位置、在新的标签或窗口中打开跳转。总之，这种看起来高级的功能，Vim其实是支持的，而且支持的语言相当多，只要`ctags`支持的都可以。
+
+当然这种外部程序的方法是会有一些痛点的，比如编辑之后需要手动重新索引，不支持增量更新的话重新索引一次可能会需要非常长的时间。还有一个问题是，`ctags`只能搜索定义，不能搜索引用。因此要用到`cscope`。这个程序使用逻辑和`ctags`差不多，也需要先新建索引，但其本身就是一个可以独立使用的交互式程序，可以在几种不同的类别下搜索符号，搜索的结果可以用Vim打开。当然，这个程序基本上就只支持C语言，而且每个结果的查看都在不同的的Vim窗口下。
+
+```text
+Find this C symbol:
+Find this function definition:
+Find functions called by this function:
+Find functions calling this function:
+Find this text string:
+Change this text string:
+Find this egrep pattern:
+Find this file:
+Find files #including this file:
+Find assignments to this symbol:
+```
+
+`cscope`在Vim中使用上也要麻烦一些。需要先用`:cs add <file>`添加数据库，然后用`:cs find <mode> <sym>`进行搜索。虽然比`ctags`功能强，但好像并不能替代`ctags`；其实也有办法，可以设置`:set cscopetag`，这样定义跳转功能也可以不经`ctags`就使用了。
+
+另外一个值得提到的工具是`gtags`，或者叫`GNU Global`。`gtags`可以直接在目录里生成可增量更新的数据库文件，共计3个文件。相对来说比`ctags`是复杂了一些，但是`gtags`可以生成对引用的索引。`gtags`附带了一个`global`程序，可以用来对数据库进行检索——毕竟不同于`ctags`的索引文件，那个是文本形式的。为了在Vim中使用，`gtags`自带了一个`Gtags.vim`插件，不过并不支持前述的那套`ctags`的操作。
+
+总体来说`gtags`提供了比`ctags`和`cscope`都要好的性能，比`cscope`更好的语言兼容性，所能提供的功能至少和`cscope`相同，但是没有特别好的Vim接口。但是正因为`gtags`能够完成`cscope`的主要功能，`gtags`程序包也提供了一个`gtags-cscope`命令，通过`cscope`的操作方式和接口，以`gtags`为后端来完成检索。是的，可以用`gtags-cscope`来替代`cscope`，在Vim中设定`:set cscopeprg=gtags-cscope`即可。
+
+查找定义和查找引用在代码阅读中就算是比较典型的场景了，`ctags`和Vim的契合度是最好的，但是不支持查找引用；`gtags`则提供了更好的功能，通过`cscope`接口稍加配置使用体验也很不错，总比`grep`搜索要好。当然这里面还有些手动的过程，比如Tagfile的更新，`cs add`的调用，不过应该已经有相应的插件了。
