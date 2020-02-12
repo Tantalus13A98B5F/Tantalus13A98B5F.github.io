@@ -6,7 +6,7 @@
     <description>Recent content on Tantalus!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Jan 2020 20:07:37 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2020 12:29:09 +0800</lastBuildDate>
     
         <atom:link href="https://Tantalus13A98B5F.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,32 @@
       
         <description>Songlin (Tantalus) is an undergraduate student in his senior year at Shanghai Jiao Tong University (SJTU). He has a general interest in developing understanding into computer systems, and assisting the authoring of better software.
 Songlin is currently a research assistant at Lab of Cryptography and Computer Security, and he works primarily on software security. His paper &amp;ldquo;Accelerating SM2 Digital Signature Algorithm Using Modern Processor Features&amp;rdquo; has been accepted to ICICS&#39;19. Recently he is working on LLVM and Intel MPK for program hardening.</description>
+      
+    </item>
+    
+    <item>
+      <title>Cannot use `:cnext` in `:Gclog`</title>
+      <link>https://Tantalus13A98B5F.github.io/post/vim-qf-valid/</link>
+      <pubDate>Mon, 10 Feb 2020 12:29:09 +0800</pubDate>
+      
+      <guid>https://Tantalus13A98B5F.github.io/post/vim-qf-valid/</guid>
+      
+        <description>Using Vim 7.4 for CentOS 7.6. After installing fugitive.vim, :Gclog will open up commits in the quickfix window. However, :cnext and :cprev do not work.
+I am suspecting that Vim 7.4 does not support setting the valid property on setqflist, and :cnext will not respect the invalid entries.
+For short, we need tmux 2.6 and Vim 8.0. Come on, CentOS 8.</description>
+      
+    </item>
+    
+    <item>
+      <title>Tmux Scrolling Issues</title>
+      <link>https://Tantalus13A98B5F.github.io/post/tmux-scroll/</link>
+      <pubDate>Wed, 29 Jan 2020 19:37:16 +0800</pubDate>
+      
+      <guid>https://Tantalus13A98B5F.github.io/post/tmux-scroll/</guid>
+      
+        <description>less inside tmux does not scroll.
+ https://github.com/tmux/tmux/issues/1320 WheelUp key shift-scroll  htop issue
+ https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=700491 .config/htop/htoprc  </description>
       
     </item>
     
