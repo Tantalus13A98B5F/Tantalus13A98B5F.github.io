@@ -2,28 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About Me on Songlin</title>
-    <link>https://example.com/docs/about/</link>
+    <link>https://tantalus13a98b5f.github.io/docs/about/</link>
     <description>Recent content in About Me on Songlin</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://example.com/docs/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tantalus13a98b5f.github.io/docs/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Education</title>
-      <link>https://example.com/docs/about/education/</link>
+      <link>https://tantalus13a98b5f.github.io/docs/about/education/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/about/education/</guid>
+      <guid>https://tantalus13a98b5f.github.io/docs/about/education/</guid>
       <description>Education </description>
     </item>
     
     <item>
       <title>Publications</title>
-      <link>https://example.com/docs/about/publications/</link>
+      <link>https://tantalus13a98b5f.github.io/docs/about/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/about/publications/</guid>
+      <guid>https://tantalus13a98b5f.github.io/docs/about/publications/</guid>
       <description>Publications </description>
     </item>
     

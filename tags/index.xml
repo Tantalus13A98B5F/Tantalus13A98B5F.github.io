@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Songlin</title>
-    <link>https://example.com/tags/</link>
+    <link>https://tantalus13a98b5f.github.io/tags/</link>
     <description>Recent content in Tags on Songlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 24 Jan 2020 16:31:37 +0800</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tantalus13a98b5f.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>clang</title>
-      <link>https://example.com/tags/clang/</link>
+      <link>https://tantalus13a98b5f.github.io/tags/clang/</link>
       <pubDate>Fri, 24 Jan 2020 16:31:37 +0800</pubDate>
       
-      <guid>https://example.com/tags/clang/</guid>
+      <guid>https://tantalus13a98b5f.github.io/tags/clang/</guid>
       <description></description>
     </item>
     

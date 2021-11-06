@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Introduction on Songlin</title>
-    <link>https://example.com/</link>
+    <link>https://tantalus13a98b5f.github.io/</link>
     <description>Recent content in Introduction on Songlin</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tantalus13a98b5f.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Education</title>
-      <link>https://example.com/docs/about/education/</link>
+      <link>https://tantalus13a98b5f.github.io/docs/about/education/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/about/education/</guid>
+      <guid>https://tantalus13a98b5f.github.io/docs/about/education/</guid>
       <description>Education </description>
     </item>
     
     <item>
       <title>Publications</title>
-      <link>https://example.com/docs/about/publications/</link>
+      <link>https://tantalus13a98b5f.github.io/docs/about/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/docs/about/publications/</guid>
+      <guid>https://tantalus13a98b5f.github.io/docs/about/publications/</guid>
       <description>Publications </description>
     </item>
     
     <item>
       <title>Cannot use `:cnext` in `:Gclog`</title>
-      <link>https://example.com/posts/vim-qf-valid/</link>
+      <link>https://tantalus13a98b5f.github.io/posts/vim-qf-valid/</link>
       <pubDate>Mon, 10 Feb 2020 12:29:09 +0800</pubDate>
       
-      <guid>https://example.com/posts/vim-qf-valid/</guid>
+      <guid>https://tantalus13a98b5f.github.io/posts/vim-qf-valid/</guid>
       <description>Using Vim 7.4 for CentOS 7.6. After installing fugitive.vim, :Gclog will open up commits in the quickfix window. However, :cnext and :cprev do not work.
 I am suspecting that Vim 7.4 does not support setting the valid property on setqflist, and :cnext will not respect the invalid entries.
 For short, we need tmux 2.6 and Vim 8.0. Come on, CentOS 8.</description>
@@ -40,10 +40,10 @@ For short, we need tmux 2.6 and Vim 8.0. Come on, CentOS 8.</description>
     
     <item>
       <title>Tmux Scrolling Issues</title>
-      <link>https://example.com/posts/tmux-scroll/</link>
+      <link>https://tantalus13a98b5f.github.io/posts/tmux-scroll/</link>
       <pubDate>Wed, 29 Jan 2020 19:37:16 +0800</pubDate>
       
-      <guid>https://example.com/posts/tmux-scroll/</guid>
+      <guid>https://tantalus13a98b5f.github.io/posts/tmux-scroll/</guid>
       <description>less inside tmux does not scroll.
  https://github.com/tmux/tmux/issues/1320 WheelUp key shift-scroll  htop issue
  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=700491 .config/htop/htoprc  </description>
@@ -51,10 +51,10 @@ For short, we need tmux 2.6 and Vim 8.0. Come on, CentOS 8.</description>
     
     <item>
       <title>My Command Line Solution Roundup - 2019</title>
-      <link>https://example.com/posts/cmdline-2019/</link>
+      <link>https://tantalus13a98b5f.github.io/posts/cmdline-2019/</link>
       <pubDate>Fri, 24 Jan 2020 20:07:37 +0800</pubDate>
       
-      <guid>https://example.com/posts/cmdline-2019/</guid>
+      <guid>https://tantalus13a98b5f.github.io/posts/cmdline-2019/</guid>
       <description>在这个时间节点上，还是稍微来整理下过去这一年以来在命令行工具方面的积累吧。过去的一年也是我在命令行中工作地越来越多的一年——中学的时候写了不少东西，学了不少操作，但是现在看来，其实都非常地扁平；随着项目规模的扩大，还是需要更好地工具来武装自己，提高效率。
 另外一点就是，有时候我们会觉得在图形环境下很容易工作，但在命令行环境下感到困难。所以我觉得一个比较有帮助的事情是，来整理一下我们如何使用一些图形的、集成的工具，从需求的角度出发，来整理命令行的使用技巧。
 Here we go!
@@ -80,20 +80,20 @@ Git Bash没有标签页也算是个问题。我也试过基于Electron的方案�
     
     <item>
       <title>Clang: Don&#39;t Touch My Code!</title>
-      <link>https://example.com/posts/clang-no-opt/</link>
+      <link>https://tantalus13a98b5f.github.io/posts/clang-no-opt/</link>
       <pubDate>Fri, 24 Jan 2020 16:31:37 +0800</pubDate>
       
-      <guid>https://example.com/posts/clang-no-opt/</guid>
+      <guid>https://tantalus13a98b5f.github.io/posts/clang-no-opt/</guid>
       <description>Clang/LLVM is a toolchain that is widely adopted by both researchers and the industry. Based on LLVM, compilers for new targets are built, and program analysis solutions are developed, thanks to the well-defined LLVM IR. Nevertheless, Clang/LLVM is also famous for some of its strange (often just &amp;ldquo;different&amp;rdquo; from gcc) behaviors and very aggressive optimizations.
 Recently I am working on LLVM (7.0) for program analysis and instrumentation, and I think it&amp;rsquo;s time to write about how we are dealing with unwanted optimizations.</description>
     </item>
     
     <item>
       <title>Hello World</title>
-      <link>https://example.com/posts/hello-world/</link>
+      <link>https://tantalus13a98b5f.github.io/posts/hello-world/</link>
       <pubDate>Thu, 02 Jan 2020 23:25:55 +0800</pubDate>
       
-      <guid>https://example.com/posts/hello-world/</guid>
+      <guid>https://tantalus13a98b5f.github.io/posts/hello-world/</guid>
       <description>Hi, this is Tantalus. I&amp;rsquo;m going to write about my life and my explorations. Cheers!</description>
     </item>
     

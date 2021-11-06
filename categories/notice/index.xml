@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Notice on Songlin</title>
-    <link>https://example.com/categories/Notice/</link>
+    <link>https://tantalus13a98b5f.github.io/categories/Notice/</link>
     <description>Recent content in Notice on Songlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 02 Jan 2020 23:25:55 +0800</lastBuildDate>
     
-	<atom:link href="https://example.com/categories/Notice/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tantalus13a98b5f.github.io/categories/Notice/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hello World</title>
-      <link>https://example.com/posts/hello-world/</link>
+      <link>https://tantalus13a98b5f.github.io/posts/hello-world/</link>
       <pubDate>Thu, 02 Jan 2020 23:25:55 +0800</pubDate>
       
-      <guid>https://example.com/posts/hello-world/</guid>
+      <guid>https://tantalus13a98b5f.github.io/posts/hello-world/</guid>
       <description>Hi, this is Tantalus. I&amp;rsquo;m going to write about my life and my explorations. Cheers!</description>
     </item>
     
