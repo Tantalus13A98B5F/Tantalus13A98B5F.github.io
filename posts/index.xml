@@ -10,28 +10,6 @@
     
     
     <item>
-      <title>Cannot use `:cnext` in `:Gclog`</title>
-      <link>https://tantalus13a98b5f.github.io/posts/vim-qf-valid/</link>
-      <pubDate>Mon, 10 Feb 2020 12:29:09 +0800</pubDate>
-      
-      <guid>https://tantalus13a98b5f.github.io/posts/vim-qf-valid/</guid>
-      <description>Using Vim 7.4 for CentOS 7.6. After installing fugitive.vim, :Gclog will open up commits in the quickfix window. However, :cnext and :cprev do not work.
-I am suspecting that Vim 7.4 does not support setting the valid property on setqflist, and :cnext will not respect the invalid entries.
-For short, we need tmux 2.6 and Vim 8.0. Come on, CentOS 8.</description>
-    </item>
-    
-    <item>
-      <title>Tmux Scrolling Issues</title>
-      <link>https://tantalus13a98b5f.github.io/posts/tmux-scroll/</link>
-      <pubDate>Wed, 29 Jan 2020 19:37:16 +0800</pubDate>
-      
-      <guid>https://tantalus13a98b5f.github.io/posts/tmux-scroll/</guid>
-      <description>less inside tmux does not scroll.
- https://github.com/tmux/tmux/issues/1320 WheelUp key shift-scroll  htop issue
- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=700491 .config/htop/htoprc  </description>
-    </item>
-    
-    <item>
       <title>My Command Line Solution Roundup - 2019</title>
       <link>https://tantalus13a98b5f.github.io/posts/cmdline-2019/</link>
       <pubDate>Fri, 24 Jan 2020 20:07:37 +0800</pubDate>
