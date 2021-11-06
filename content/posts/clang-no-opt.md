@@ -3,7 +3,7 @@ title: "Clang: Don't Touch My Code!"
 date: 2020-01-24T16:31:37+08:00
 draft: false
 tags: ["clang"]
-categories: ["System"]
+categories: ["system"]
 
 toc: true
 mathjax: false
