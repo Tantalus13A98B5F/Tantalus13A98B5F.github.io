@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Tantalus!</title>
-    <link>https://Tantalus13A98B5F.github.io/tags/</link>
-    <description>Recent content in Tags on Tantalus!</description>
+    <title>Tags on Songlin</title>
+    <link>https://example.com/tags/</link>
+    <description>Recent content in Tags on Songlin</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
     <lastBuildDate>Fri, 24 Jan 2020 16:31:37 +0800</lastBuildDate>
     
-	<atom:link href="https://Tantalus13A98B5F.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>clang</title>
-      <link>https://Tantalus13A98B5F.github.io/tags/clang/</link>
+      <link>https://example.com/tags/clang/</link>
       <pubDate>Fri, 24 Jan 2020 16:31:37 +0800</pubDate>
       
-      <guid>https://Tantalus13A98B5F.github.io/tags/clang/</guid>
+      <guid>https://example.com/tags/clang/</guid>
       <description></description>
     </item>
     
