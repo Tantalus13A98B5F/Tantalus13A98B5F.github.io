@@ -10,17 +10,18 @@ Recently I am working on LLVM (7.0) for program analysis and instrumentation, an
 <meta property="og:description" content="Clang/LLVM is a toolchain that is widely adopted by both researchers and the industry. Based on LLVM, compilers for new targets are built, and program analysis solutions are developed, thanks to the well-defined LLVM IR. Nevertheless, Clang/LLVM is also famous for some of its strange (often just &ldquo;different&rdquo; from gcc) behaviors and very aggressive optimizations.
 Recently I am working on LLVM (7.0) for program analysis and instrumentation, and I think it&rsquo;s time to write about how we are dealing with unwanted optimizations." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://tantalus13a98b5f.github.io/posts/clang-no-opt/" />
+<meta property="og:url" content="https://tantalus13a98b5f.github.io/posts/clang-no-opt/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-01-24T16:31:37+08:00" />
 <meta property="article:modified_time" content="2021-11-06T11:36:25-04:00" />
+
 <title>Clang: Don&#39;t Touch My Code! | Songlin</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.e62c87c0a5f78618c1d9654bac000b57fdba292e359cd3ae3a97d4774328868d.css" integrity="sha256-5iyHwKX3hhjB2WVLrAALV/26KS41nNOuOpfUd0Moho0=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.b6ce2c4b7e59d6c5faed94684f1a4fd9d7e2d27f9234370dbcbe9127a0128fab.js" integrity="sha256-ts4sS35Z1sX67ZRoTxpP2dfi0n&#43;SNDcNvL6RJ6ASj6s=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0c252971ed4686d5d76bac5e2c1181ea18248535ae4d08c7e31ae2938e3f8f58.js" integrity="sha256-DCUpce1GhtXXa6xeLBGB6hgkhTWuTQjH4xrik44/j1g=" crossorigin="anonymous"></script>
 
-  <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ=" crossorigin="anonymous"></script>
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -148,7 +149,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -226,15 +227,21 @@ https://github.com/alex-shpak/hugo-book
 
 <p>Clang/LLVM is a toolchain that is widely adopted by both researchers and the industry. Based on LLVM, compilers for new targets are built, and program analysis solutions are developed, thanks to the well-defined LLVM IR. Nevertheless, Clang/LLVM is also famous for some of its strange (often just &ldquo;different&rdquo; from gcc) behaviors and very aggressive optimizations.</p>
 <p>Recently I am working on LLVM (7.0) for program analysis and instrumentation, and I think it&rsquo;s time to write about how we are dealing with unwanted optimizations. Here we start.</p>
-<h2 id="our-problem">Our Problem</h2>
+<h2 id="our-problem">
+  Our Problem
+  <a class="anchor" href="#our-problem">#</a>
+</h2>
 <p>We are doing a whole program analysis, thus we need to compile every source file to bitcode respectively, and then link them together to perform the analysis and instrumentation. Since there can be information loss during optimization, it&rsquo;s best to analyze an untouched bitcode file, and then perform the optimization after instrumentation. Something like,</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ clang -emit-llvm hello.c -c -o hello.bc
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ clang -emit-llvm hello.c -c -o hello.bc
 $ opt -load mypass.so -mypassname hello.bc &gt;output.bc
 $ clang -emit-llvm -O2 output.bc -o optimized.bc
 </code></pre></div><p>However, the latter optimization is not happening, i.e. <code>output.bc</code> and <code>optmized.bc</code> are nearly the same.</p>
-<h2 id="how-is-clang-calling-optmizations">How is Clang calling optmizations?</h2>
+<h2 id="how-is-clang-calling-optmizations">
+  How is Clang calling optmizations?
+  <a class="anchor" href="#how-is-clang-calling-optmizations">#</a>
+</h2>
 <p>Suspecting some action might be done in the frontend, we looked into what <code>clang</code> is doing internally. The <code>-###</code> argument may be helpful.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ clang -<span style="color:#ae81ff">\#\#\#</span> hello.c -O2 -c -o hello.bc -emit-llvm
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ clang -<span style="color:#ae81ff">\#\#\#</span> hello.c -O2 -c -o hello.bc -emit-llvm
 clang version 7.0.0
 Target: x86_64-unknown-linux-gnu
 Thread model: posix
@@ -251,7 +258,7 @@ InstalledDir: /llvmroot/bin
  <span style="color:#e6db74">&#34;-fmessage-length&#34;</span> <span style="color:#e6db74">&#34;189&#34;</span> <span style="color:#e6db74">&#34;-fobjc-runtime=gcc&#34;</span> <span style="color:#e6db74">&#34;-fdiagnostics-show-option&#34;</span> <span style="color:#e6db74">&#34;-fcolor-diagnostics&#34;</span>
  <span style="color:#e6db74">&#34;-vectorize-loops&#34;</span> <span style="color:#e6db74">&#34;-vectorize-slp&#34;</span> <span style="color:#e6db74">&#34;-o&#34;</span> <span style="color:#e6db74">&#34;hello.bc&#34;</span> <span style="color:#e6db74">&#34;-x&#34;</span> <span style="color:#e6db74">&#34;c&#34;</span> <span style="color:#e6db74">&#34;hello.c&#34;</span> <span style="color:#e6db74">&#34;-faddrsig&#34;</span>
 </code></pre></div><p>You can see that <code>clang</code> is calling the internal <code>-cc1</code> interface. Though said to be modular, <code>-cc1</code> is not further calling the <code>opt</code> optimizer, but consuming the <code>-O2</code> option itself. In fact the LLVM IR codegen is built into the <code>-cc1</code> as a library. You can pass arguments to the codegen after the switch <code>-mllvm</code>, and using <code>-debug-pass</code> you can see the information of passes executed:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ clang -mllvm -debug-pass<span style="color:#f92672">=</span>Arguments hello.c -O2 -c -o hello.bc -emit-llvm
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ clang -mllvm -debug-pass<span style="color:#f92672">=</span>Arguments hello.c -O2 -c -o hello.bc -emit-llvm
 Pass Arguments:  -tti -targetlibinfo -tbaa -scoped-noalias -assumption-cache-tracker
  -verify -ee-instrument -simplifycfg -domtree -sroa -early-cse -lower-expect
 Pass Arguments:  -tti -targetlibinfo -tbaa -scoped-noalias -assumption-cache-tracker
@@ -270,17 +277,23 @@ Pass Arguments:  -tti
 </code></pre></div><p>So you see&hellip; there are so many passes, and there are so many rounds of passes!</p>
 <p>If you look into the source of <code>clang</code>, you&rsquo;ll see that all it is doing upon a <code>*.c</code> file is handled inside the <code>clang::ParseAST</code> function, defined at <code>lib/Parse/ParseAST.cpp:114</code>. Through <code>BackendConsumer::HandleTopLevelDecl</code>, each item defined in the source file is translated into IR, if <code>-emit-llvm</code> is used, and through <code>BackendConsumer::HandleTranslationUnit</code>, the IR is optimized and printed. Passes are directly called in <code>EmitAssemblyHelper::EmitAssembly</code>, and here we can see that different rounds of passes stand for per-function round, per-module round, and code-gen round, respectively. Thus you cannot append all the output by <code>-debug-pass</code> to an <code>opt</code> run &ndash; it will not work.</p>
 <p>We compared the IR generated under different optimization level before going through all those passes, and we found that they were the same &ndash; no optimizations done in the frontend.</p>
-<h2 id="put-off-optimizations">Put off optimizations</h2>
+<h2 id="put-off-optimizations">
+  Put off optimizations
+  <a class="anchor" href="#put-off-optimizations">#</a>
+</h2>
 <p>Back to our topic. Regretfully we found that making clear about the pass running is not directly helpful, though interesting. Then what is that preventing the optimization? Maybe some metadata?</p>
 <p>We examined the IR code again, and found out that there&rsquo;s a function attribute called <code>optnone</code>, like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ll" data-lang="ll"><span style="color:#66d9ef">define</span> <span style="color:#960050;background-color:#1e0010">dso_local</span> <span style="color:#66d9ef">i32</span> @main() #0 {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ll" data-lang="ll"><span style="color:#66d9ef">define</span> <span style="color:#960050;background-color:#1e0010">dso_local</span> <span style="color:#66d9ef">i32</span> @main() #0 {
     ...
 }
 
 <span style="color:#66d9ef">attributes</span> #0 = { <span style="color:#66d9ef">noinline</span> <span style="color:#66d9ef">nounwind</span> <span style="color:#66d9ef">optnone</span> <span style="color:#66d9ef">uwtable</span> ...
 </code></pre></div><p>After manually removing this attribute, the optimization now works. If manual modification is not acceptable, <code>-Xclang -disable-O0-optnone</code> is to the rescue.</p>
 <p>One more thing. If we are using a higher optimization level, like <code>-O2</code>, can we simply put off the execution of all the passes? Yeah, use <code>-Xclang -disable-llvm-passes</code>.</p>
-<h2 id="zero-out-the-stack">Zero out the stack</h2>
+<h2 id="zero-out-the-stack">
+  Zero out the stack
+  <a class="anchor" href="#zero-out-the-stack">#</a>
+</h2>
 <p>Another interesting task is that, how to safely zero out the stack in clang. In C11, there is <code>memset_s</code>, a safe memory-set operation that will not get optimized. However, it is optional, and not included in clang. But there are other chances.</p>
 <p>As <code>memset</code> is in fact an internal function in LLVM, it could be created using a dedicated interface, i.e. 
   <a href="http://llvm.org/doxygen/classllvm_1_1IRBuilderBase.html#a7a87ff785ecd8547f1fb561b6016827e"><code>IRBuilder::CreateMemSet</code></a>. There is a <code>volatile</code> argument, with no explanation here. Well, all memory-write operations in LLVM could be marked as <code>volatile</code> so that it will not get optimized, and <code>memset</code> is just another case.</p>
@@ -307,8 +320,7 @@ Pass Arguments:  -tti
 
 
 
-  <script>(function(){function select(element){const selection=window.getSelection();const range=document.createRange();range.selectNodeContents(element);selection.removeAllRanges();selection.addRange(range);}
-document.querySelectorAll("pre code").forEach(code=>{code.addEventListener("click",function(event){select(code.parentElement);if(navigator.clipboard){navigator.clipboard.writeText(code.parentElement.textContent);}});});})();</script>
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
 
 
  

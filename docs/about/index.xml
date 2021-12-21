@@ -4,18 +4,18 @@
     <title>About Me on Songlin</title>
     <link>https://tantalus13a98b5f.github.io/docs/about/</link>
     <description>Recent content in About Me on Songlin</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://tantalus13a98b5f.github.io/docs/about/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://tantalus13a98b5f.github.io/docs/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Education</title>
       <link>https://tantalus13a98b5f.github.io/docs/about/education/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://tantalus13a98b5f.github.io/docs/about/education/</guid>
-      <description>Education </description>
+      <description>Education #    Sep 2021 - now, Purdue University, IN, US
+Ph.D. in Computer Science
+  Sep 2016 - Jun 2020, Shanghai Jiao Tong University, Shanghai, China
+B.Eng. in Information Security
+  </description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://tantalus13a98b5f.github.io/docs/about/publications/</guid>
-      <description>Publications </description>
+      <description>Publications #  </description>
     </item>
     
   </channel>

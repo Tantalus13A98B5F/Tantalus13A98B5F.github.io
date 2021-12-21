@@ -1,75 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://tantalus13a98b5f.github.io/docs/about/education/</loc>
-    <lastmod>2021-11-06T11:02:28-04:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-12-21T17:13:06-05:00</lastmod>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/docs/about/publications/</loc>
     <lastmod>2021-11-06T11:02:28-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/posts/cmdline-2019/</loc>
     <lastmod>2021-11-06T11:02:28-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/categories/</loc>
     <lastmod>2021-11-06T11:36:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/tags/clang/</loc>
     <lastmod>2021-11-06T11:36:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/posts/clang-no-opt/</loc>
     <lastmod>2021-11-06T11:36:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/categories/system/</loc>
     <lastmod>2021-11-06T11:36:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/tags/</loc>
     <lastmod>2021-11-06T11:36:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/posts/hello-world/</loc>
     <lastmod>2021-11-06T11:36:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/categories/notice/</loc>
     <lastmod>2021-11-06T11:36:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/docs/about/</loc>
     <lastmod>2021-11-06T11:02:28-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/posts/</loc>
     <lastmod>2021-11-06T11:02:28-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/docs/</loc>
-    <lastmod>2021-11-06T11:02:28-04:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-12-21T17:13:06-05:00</lastmod>
+  </url><url>
     <loc>https://tantalus13a98b5f.github.io/</loc>
-    <lastmod>2021-11-06T11:02:28-04:00</lastmod>
+    <lastmod>2021-12-21T17:13:06-05:00</lastmod>
   </url>
-  
 </urlset>
