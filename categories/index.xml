@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Songlin</title>
+    <title>Categories on Songlin Jia</title>
     <link>https://tantalus13a98b5f.github.io/categories/</link>
-    <description>Recent content in Categories on Songlin</description>
+    <description>Recent content in Categories on Songlin Jia</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 24 Jan 2020 16:31:37 +0800</lastBuildDate><atom:link href="https://tantalus13a98b5f.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>system</title>
-      <link>https://tantalus13a98b5f.github.io/categories/system/</link>
-      <pubDate>Fri, 24 Jan 2020 16:31:37 +0800</pubDate>
-      
-      <guid>https://tantalus13a98b5f.github.io/categories/system/</guid>
-      <description></description>
-    </item>
     
-    <item>
-      <title>notice</title>
-      <link>https://tantalus13a98b5f.github.io/categories/notice/</link>
-      <pubDate>Thu, 02 Jan 2020 23:25:55 +0800</pubDate>
-      
-      <guid>https://tantalus13a98b5f.github.io/categories/notice/</guid>
-      <description></description>
-    </item>
+	<atom:link href="https://tantalus13a98b5f.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
     
   </channel>
 </rss>
