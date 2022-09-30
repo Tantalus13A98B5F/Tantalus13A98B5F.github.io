@@ -1,7 +1,7 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
 baseURL = 'https://tantalus13a98b5f.github.io/'
-title = 'Songlin'
+title = 'Songlin Jia'
 theme = 'book'
 
 # Book configuration
@@ -38,11 +38,21 @@ hasCJKLanguage = true
 #   weight = 3
 
 [menu]
-# [[menu.before]]
-# [[menu.after]]
-#   name = "Github"
-#   url = "https://github.com/alex-shpak/hugo-book"
-#   weight = 10
+
+[[menu.before]]
+  name = "mail: jia137 at purdue.edu"
+  url = "about:blank"
+  weight = 12
+
+[[menu.before]]
+  name = "Github"
+  url = "https://github.com/Tantalus13A98B5F"
+  weight = 11
+
+[[menu.before]]
+  name = "Google Scholar"
+  url = "https://scholar.google.com/citations?user=L-b-B8kAAAAJ"
+  weight = 10
 
 [[menu.after]]
   name = "Theme: Hugo Book"
@@ -52,7 +62,7 @@ hasCJKLanguage = true
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.
   # Theme 'auto' switches between dark and light modes based on browser/os preferences
-  BookTheme = 'light'
+  BookTheme = 'auto'
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.

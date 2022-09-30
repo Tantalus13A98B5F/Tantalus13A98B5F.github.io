@@ -1,7 +1,7 @@
 ---
 title: "My Command Line Solution Roundup - 2019"
 date: 2020-01-24T20:07:37+08:00
-draft: false
+draft: true
 tags: []
 categories: []
 

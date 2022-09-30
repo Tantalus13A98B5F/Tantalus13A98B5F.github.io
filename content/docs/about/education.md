@@ -11,11 +11,9 @@ weight: 1
 
 # Education
 
-- Sep 2021 - now, Purdue University, IN, US
-
+- _Sep 2021 - now_, Purdue University, IN, US <br>
     Ph.D. in Computer Science
 
 
-- Sep 2016 - Jun 2020, Shanghai Jiao Tong University, Shanghai, China
-
+- _Sep 2016 - Jun 2020_, Shanghai Jiao Tong University, Shanghai, China <br>
     B.Eng. in Information Security
